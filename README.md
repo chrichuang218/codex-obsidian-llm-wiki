@@ -83,6 +83,9 @@ Natural language works, but explicit commands are easier to remember:
 
 `cow` means **Codex Obsidian Wiki**.
 
+See [docs/commands.md](docs/commands.md) for the full command reference.
+Migrating from another Markdown wiki? See [docs/migration.md](docs/migration.md).
+
 ## Vault Layout
 
 ```text
@@ -111,6 +114,8 @@ The skill uses a two-step ingest pattern:
 2. **Write** durable pages: `sources`, `topics`, `entities`, `index`, `log`.
 
 Uncertain items go to `wiki/review/` instead of being silently guessed.
+
+`/cow:batch` uses `.wiki-cache.json` to skip unchanged raw files. `lint_wiki.py` checks broken wikilinks, index coverage, source traceability, missing raw sources, and open review items.
 
 ## Obsidian
 

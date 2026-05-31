@@ -32,3 +32,24 @@ Example:
 /cow:ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
 /cow:query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
 ```
+
+## Cache-Aware Batch Ingest
+
+Use `.wiki-cache.json` to avoid re-ingesting unchanged raw files.
+
+The bundled helper supports:
+
+```bash
+python scripts/cache.py check <raw-file>
+python scripts/cache.py update <raw-file> <source-page>
+python scripts/cache.py list <wiki-root>
+python scripts/cache.py stale <wiki-root>
+```
+
+Batch ingest should:
+
+1. Walk `raw/`.
+2. Run `cache.py check` for each candidate source.
+3. Ingest only cache misses.
+4. Run `cache.py update` after writing the matching `wiki/sources/` page.
+5. Run `lint_wiki.py` at the end.

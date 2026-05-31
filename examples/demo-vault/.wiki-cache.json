@@ -1,5 +1,10 @@
 {
   "version": 1,
-  "entries": {}
+  "entries": {
+    "raw/notes/demo.md": {
+      "hash": "sha256:892136cb89076935a8d22f2efc894bbc1aa3c1a83c914250db0d50e34cbda043",
+      "ingested_at": "2026-05-31T09:30:26Z",
+      "source_page": "wiki/sources/demo-source.md"
+    }
+  }
 }
-

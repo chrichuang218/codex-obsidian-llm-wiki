@@ -77,6 +77,9 @@ python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-sk
 
 `cow` 是 **Codex Obsidian Wiki** 的缩写。
 
+完整指令说明见 [docs/commands.md](docs/commands.md)。
+从其他 Markdown wiki 迁移时，参考 [docs/migration.md](docs/migration.md)。
+
 ## 目录结构
 
 ```text
@@ -104,6 +107,8 @@ my-wiki/
 - 每个重要结论都要能追到 `wiki/sources/` 或 `raw/`。
 - 不确定内容进入 `wiki/review/`，不强行写死。
 - Obsidian 只做前端，Markdown 才是数据。
+- `/cow:batch` 使用 `.wiki-cache.json` 跳过未变化的 raw 文件。
+- `lint_wiki.py` 会检查断链、index 收录、source traceability、缺失 raw 和 review 项。
 
 ## License
 

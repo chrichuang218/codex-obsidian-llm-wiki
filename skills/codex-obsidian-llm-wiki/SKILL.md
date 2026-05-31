@@ -55,6 +55,8 @@ Use a two-step ingest:
 
 Do not invent missing facts. If a claim is uncertain, file it under `wiki/review/`.
 
+For `/cow:batch`, use `scripts/cache.py check` to skip unchanged raw files and `scripts/cache.py update` after writing the source page.
+
 ### query
 
 Answer from the wiki, not general memory:
@@ -75,7 +77,18 @@ Run:
 python scripts/lint_wiki.py <wiki-root>
 ```
 
-Fix deterministic issues directly: broken links, missing index entries, missing required folders, and missing cache file. Put ambiguous issues into `wiki/review/`.
+Fix deterministic issues directly: broken links, missing index entries, missing required folders, missing cache file, missing `source_path`, missing `sources`, and missing raw source references. Put ambiguous issues into `wiki/review/`.
+
+### cache
+
+Use the cache helper for batch ingest:
+
+```bash
+python scripts/cache.py check <raw-file>
+python scripts/cache.py update <raw-file> <source-page>
+python scripts/cache.py list <wiki-root>
+python scripts/cache.py stale <wiki-root>
+```
 
 ### graph
 
