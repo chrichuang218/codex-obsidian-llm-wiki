@@ -74,6 +74,9 @@ def cmd_update(source_arg: str, source_page_arg: str) -> int:
     source_page_rel = source_page.as_posix()
     if source_page.is_absolute():
         source_page_rel = rel(root, source_page.resolve())
+    if not (root / source_page_rel).exists():
+        print(f"Source page does not exist: {source_page_rel}", file=sys.stderr)
+        return 2
     data = load_cache(root)
     data.setdefault("entries", {})[rel(root, source)] = {
         "hash": source_hash(root, source),
@@ -137,4 +140,3 @@ def main(argv: list[str]) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv))
-

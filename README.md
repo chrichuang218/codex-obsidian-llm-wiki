@@ -116,6 +116,7 @@ The skill uses a two-step ingest pattern:
 Uncertain items go to `wiki/review/` instead of being silently guessed.
 
 `/cow:batch` uses `.wiki-cache.json` to skip unchanged raw files. `lint_wiki.py` checks broken wikilinks, index coverage, source traceability, missing raw sources, and open review items.
+Duplicate page names are lint errors because Obsidian wikilinks become ambiguous.
 
 ## Obsidian
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 
@@ -23,8 +24,11 @@ WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\]")
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---\n", re.DOTALL)
 
 
-def page_names(wiki_dir: Path) -> set[str]:
-    return {p.stem for p in wiki_dir.rglob("*.md")}
+def page_map(wiki_dir: Path) -> dict[str, list[Path]]:
+    pages: dict[str, list[Path]] = defaultdict(list)
+    for page in wiki_dir.rglob("*.md"):
+        pages[page.stem].append(page)
+    return dict(pages)
 
 
 def read_frontmatter(path: Path) -> dict[str, object]:
@@ -70,6 +74,7 @@ def list_value(frontmatter: dict[str, object], key: str) -> list[str]:
 
 def lint(root: Path) -> int:
     issues = 0
+    warnings = 0
     wiki_dir = root / "wiki"
     index_path = root / "index.md"
 
@@ -86,9 +91,16 @@ def lint(root: Path) -> int:
     if not wiki_dir.exists():
         return issues or 1
 
-    names = page_names(wiki_dir)
+    pages = page_map(wiki_dir)
+    names = set(pages)
     broken = []
     inbound: dict[str, int] = {name: 0 for name in names}
+
+    for name, paths in sorted(pages.items()):
+        if len(paths) > 1:
+            joined = ", ".join(str(path.relative_to(root)) for path in paths)
+            print(f"DUPLICATE_PAGE_NAME {name}: {joined}")
+            issues += 1
 
     for md in wiki_dir.rglob("*.md"):
         text = md.read_text(encoding="utf-8")
@@ -115,6 +127,9 @@ def lint(root: Path) -> int:
 
     for name, count in sorted(inbound.items()):
         if name == "overview":
+            continue
+        paths = pages.get(name, [])
+        if all("wiki/review" in path.as_posix() or "wiki/queries" in path.as_posix() for path in paths):
             continue
         if count == 0:
             print(f"ORPHAN_PAGE {name}")
@@ -150,7 +165,8 @@ def lint(root: Path) -> int:
 
     review_files = [p for p in (wiki_dir / "review").glob("*.md")]
     if review_files:
-        print(f"OPEN_REVIEW_ITEMS {len(review_files)}")
+        print(f"WARN_OPEN_REVIEW_ITEMS {len(review_files)}")
+        warnings += len(review_files)
 
     cache_path = root / ".wiki-cache.json"
     if cache_path.exists():
@@ -159,10 +175,13 @@ def lint(root: Path) -> int:
             print("INVALID_CACHE missing entries")
             issues += 1
 
-    if issues == 0:
+    if issues == 0 and warnings == 0:
         print("OK wiki is healthy")
+    elif issues == 0:
+        print(f"OK wiki is healthy with {warnings} warning(s)")
     else:
-        print(f"FOUND {issues} issue(s)")
+        suffix = f" and {warnings} warning(s)" if warnings else ""
+        print(f"FOUND {issues} issue(s){suffix}")
     return 0 if issues == 0 else 1
 
 

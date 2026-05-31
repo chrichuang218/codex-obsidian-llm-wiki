@@ -109,6 +109,7 @@ my-wiki/
 - Obsidian 只做前端，Markdown 才是数据。
 - `/cow:batch` 使用 `.wiki-cache.json` 跳过未变化的 raw 文件。
 - `lint_wiki.py` 会检查断链、index 收录、source traceability、缺失 raw 和 review 项。
+- 重名页面会被视为 lint error，因为 Obsidian wikilinks 会变得歧义。
 
 ## License
 

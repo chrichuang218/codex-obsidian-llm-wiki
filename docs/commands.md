@@ -40,3 +40,4 @@ python scripts/cache.py list <wiki-root>
 python scripts/cache.py stale <wiki-root>
 ```
 
+`cache.py update` requires both the raw file and source page to exist. `lint_wiki.py` treats open review files as warnings and duplicate page names as errors.
