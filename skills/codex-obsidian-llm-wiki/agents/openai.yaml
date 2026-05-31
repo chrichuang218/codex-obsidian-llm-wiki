@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Obsidian LLM Wiki"
+  short_description: "Obsidian Markdown LLM Wiki"
+  default_prompt: "Use this skill to initialize or maintain an Obsidian-compatible Markdown LLM Wiki with Codex."
