@@ -33,6 +33,7 @@ python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github
   --path skills/cow \
   --path skills/cow-help \
   --path skills/cow-init \
+  --path skills/cow-raw-add \
   --path skills/cow-ingest \
   --path skills/cow-batch \
   --path skills/cow-query \
@@ -44,7 +45,7 @@ python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github
 On Windows, the script is usually at:
 
 ```powershell
-python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
+python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-raw-add --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
 ```
 
 Restart Codex after installation.
@@ -81,6 +82,7 @@ Natural language works, but explicit `cow` phrases are easier to remember and ca
 
 ```text
 cow init D:\Wiki\my-wiki "My Wiki"
+cow raw add D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow batch D:\Wiki\my-wiki
 cow query D:\Wiki\my-wiki "What is Android AIDL hidden API collision?"

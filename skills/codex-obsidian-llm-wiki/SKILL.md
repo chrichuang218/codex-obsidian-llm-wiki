@@ -26,6 +26,7 @@ Treat these command aliases as direct operation requests:
 | Command | Meaning |
 |---|---|
 | `cow init <wiki-root> "<topic>"` | Initialize a new wiki. |
+| `cow raw add <source> <wiki-root>` | Add files or folders to `raw/` only, without creating knowledge pages. |
 | `cow ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
 | `cow batch <wiki-root>` | Ingest new or changed files under `raw/`. |
 | `cow query <wiki-root> "<question>"` | Answer from the wiki with citations. |
@@ -45,6 +46,18 @@ python scripts/init_wiki.py <wiki-root> "<topic>"
 ```
 
 Then ask the user to open the folder in Obsidian if they want backlinks and graph view.
+
+### raw add
+
+Use `scripts/raw_add.py` to stage external files or folders under `raw/` without digesting them into wiki pages:
+
+```bash
+python scripts/raw_add.py <source> <wiki-root> --section notes
+python scripts/raw_add.py <source-folder> <wiki-root> --section articles --name my-source
+python scripts/raw_add.py <source> <wiki-root> --section notes --sanitize
+```
+
+Choose an existing raw subfolder when it fits: `notes`, `articles`, `pdfs`, or `assets`. Create a clear new subfolder such as `configs` or `reports` only when existing folders do not fit. Use `--sanitize` for credentials, account identifiers, private paths, API keys, tokens, or other sensitive personal data. Raw add updates `.wiki-cache.json` with an empty `source_page` and appends to `log.md`; `cache.py check` must still report a MISS until ingest writes the matching source page. Use `cow batch` later to digest staged raw material.
 
 ### ingest
 
@@ -88,6 +101,7 @@ python scripts/cache.py check <raw-file>
 python scripts/cache.py update <raw-file> <source-page>
 python scripts/cache.py list <wiki-root>
 python scripts/cache.py stale <wiki-root>
+python scripts/raw_add.py <source> <wiki-root> --section notes
 ```
 
 ### graph

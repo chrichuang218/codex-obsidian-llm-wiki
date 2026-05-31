@@ -10,6 +10,7 @@ They are skill trigger phrases, not Codex slash commands.
 | Command | Purpose |
 |---|---|
 | `cow init <wiki-root> "<topic>"` | Initialize a new Obsidian-compatible Markdown wiki. |
+| `cow raw add <source> <wiki-root>` | Add files or folders to `raw/` only, without creating knowledge pages. |
 | `cow ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
 | `cow batch <wiki-root>` | Ingest new or changed files under `raw/`, using `.wiki-cache.json` to skip unchanged files. |
 | `cow query <wiki-root> "<question>"` | Answer from the wiki with citations. |
@@ -22,6 +23,7 @@ They are skill trigger phrases, not Codex slash commands.
 
 ```text
 cow init D:\Wiki\my-wiki "工程知识库"
+cow raw add D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow batch D:\Wiki\my-wiki
 cow query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
@@ -39,6 +41,7 @@ python scripts/cache.py check <raw-file>
 python scripts/cache.py update <raw-file> <source-page>
 python scripts/cache.py list <wiki-root>
 python scripts/cache.py stale <wiki-root>
+python scripts/raw_add.py <source> <wiki-root> --section notes
 ```
 
-`cache.py update` requires both the raw file and source page to exist. `lint_wiki.py` treats open review files as warnings and duplicate page names as errors.
+`cache.py update` requires both the raw file and source page to exist. Raw files staged by `raw_add.py` use an empty `source_page`, so `cache.py check` still reports a MISS until the source is ingested. `lint_wiki.py` treats open review files as warnings and duplicate page names as errors.

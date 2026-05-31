@@ -29,7 +29,7 @@ https://github.com/chrichuang218/codex-obsidian-llm-wiki/tree/main/skills/codex-
 或使用 Codex 通用 skill 安装器：
 
 ```powershell
-python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
+python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-raw-add --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
 ```
 
 安装后重启 Codex。
@@ -66,6 +66,7 @@ python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-sk
 
 ```text
 cow init D:\Wiki\my-wiki "我的知识库"
+cow raw add D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow batch D:\Wiki\my-wiki
 cow query D:\Wiki\my-wiki "AIDL hidden API crash 是什么？"

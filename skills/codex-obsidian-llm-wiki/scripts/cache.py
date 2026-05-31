@@ -57,6 +57,9 @@ def cmd_check(source_arg: str) -> int:
         print(f"MISS:hash_changed {source_rel}")
         return 1
     source_page = entry.get("source_page", "")
+    if not source_page:
+        print(f"MISS:no_source_page {source_rel}")
+        return 1
     if source_page and not (root / source_page).exists():
         print(f"MISS:no_source_page {source_rel} -> {source_page}")
         return 1
@@ -111,7 +114,9 @@ def cmd_stale(root_arg: str) -> int:
             reason = "missing_raw"
         elif entry.get("hash") != source_hash(root, source):
             reason = "hash_changed"
-        elif entry.get("source_page") and not (root / entry["source_page"]).exists():
+        elif not entry.get("source_page"):
+            reason = "missing_source_page"
+        elif not (root / entry["source_page"]).exists():
             reason = "missing_source_page"
         if reason:
             stale += 1

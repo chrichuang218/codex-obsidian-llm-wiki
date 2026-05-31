@@ -9,6 +9,7 @@ Show this concise cheatsheet:
 
 ```text
 cow init <wiki-root> "<topic>"          Initialize a new wiki.
+cow raw add <source> <wiki-root>       Add files or folders to raw/ only.
 cow ingest <source> <wiki-root>        Ingest one file, folder, URL, or pasted source.
 cow batch <wiki-root>                  Ingest new or changed files under raw/.
 cow query <wiki-root> "<question>"     Answer from the wiki with citations.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cow Raw Add"
+  short_description: "Add files or folders to wiki raw/"
+  default_prompt: "Use $cow-raw-add to add files or folders into a Codex Obsidian Wiki raw directory."

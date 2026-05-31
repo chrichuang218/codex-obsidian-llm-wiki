@@ -17,6 +17,7 @@ Use natural language or these stable `cow` trigger phrases:
 | Command | Purpose |
 |---|---|
 | `cow init <wiki-root> "<topic>"` | Initialize a new wiki. |
+| `cow raw add <source> <wiki-root>` | Add files or folders to `raw/` only. |
 | `cow ingest <source> <wiki-root>` | Ingest one source. |
 | `cow batch <wiki-root>` | Ingest new or changed raw files. |
 | `cow query <wiki-root> "<question>"` | Query the wiki. |
@@ -29,6 +30,7 @@ Example:
 
 ```text
 cow init D:\Wiki\my-wiki "工程知识库"
+cow raw add D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
 cow query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
 ```
@@ -40,6 +42,7 @@ Use `.wiki-cache.json` to avoid re-ingesting unchanged raw files.
 The bundled helper supports:
 
 ```bash
+python scripts/raw_add.py <source> <wiki-root> --section notes
 python scripts/cache.py check <raw-file>
 python scripts/cache.py update <raw-file> <source-page>
 python scripts/cache.py list <wiki-root>
