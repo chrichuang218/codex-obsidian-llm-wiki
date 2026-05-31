@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Query"
+  short_description: "Query an Obsidian Markdown wiki"
+  default_prompt: "Use $cow-query to answer a question from a Codex Obsidian Wiki."
+

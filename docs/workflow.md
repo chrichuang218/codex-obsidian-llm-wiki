@@ -12,25 +12,25 @@ The goal is not to replace Obsidian. Obsidian is the front end; Markdown is the 
 
 ## Explicit Commands
 
-Use natural language or these stable aliases:
+Use natural language or these stable `cow` trigger phrases:
 
 | Command | Purpose |
 |---|---|
-| `/cow:init <wiki-root> "<topic>"` | Initialize a new wiki. |
-| `/cow:ingest <source> <wiki-root>` | Ingest one source. |
-| `/cow:batch <wiki-root>` | Ingest new or changed raw files. |
-| `/cow:query <wiki-root> "<question>"` | Query the wiki. |
-| `/cow:lint <wiki-root>` | Run health checks. |
-| `/cow:graph <wiki-root>` | Generate a Mermaid knowledge graph. |
-| `/cow:review <wiki-root>` | Process review queue items. |
-| `/cow:help` | Show command help. |
+| `cow init <wiki-root> "<topic>"` | Initialize a new wiki. |
+| `cow ingest <source> <wiki-root>` | Ingest one source. |
+| `cow batch <wiki-root>` | Ingest new or changed raw files. |
+| `cow query <wiki-root> "<question>"` | Query the wiki. |
+| `cow lint <wiki-root>` | Run health checks. |
+| `cow graph <wiki-root>` | Generate a Mermaid knowledge graph. |
+| `cow review <wiki-root>` | Process review queue items. |
+| `cow help` | Show command help. |
 
 Example:
 
 ```text
-/cow:init D:\Wiki\my-wiki "工程知识库"
-/cow:ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
-/cow:query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
+cow init D:\Wiki\my-wiki "工程知识库"
+cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
+cow query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
 ```
 
 ## Cache-Aware Batch Ingest

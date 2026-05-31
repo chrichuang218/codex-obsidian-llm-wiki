@@ -17,7 +17,7 @@ Many LLM Wiki tools are full desktop apps. This project is intentionally lighter
 
 ## Install
 
-Ask Codex:
+Ask Codex to install the main skill and command companion skills:
 
 ```text
 Install this skill:
@@ -29,13 +29,22 @@ Or run the standard Codex skill installer:
 ```bash
 python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
   --repo chrichuang218/codex-obsidian-llm-wiki \
-  --path skills/codex-obsidian-llm-wiki
+  --path skills/codex-obsidian-llm-wiki \
+  --path skills/cow \
+  --path skills/cow-help \
+  --path skills/cow-init \
+  --path skills/cow-ingest \
+  --path skills/cow-batch \
+  --path skills/cow-query \
+  --path skills/cow-lint \
+  --path skills/cow-graph \
+  --path skills/cow-review
 ```
 
 On Windows, the script is usually at:
 
 ```powershell
-python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki
+python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
 ```
 
 Restart Codex after installation.
@@ -68,20 +77,21 @@ Maintain it:
 
 ## Command Cheatsheet
 
-Natural language works, but explicit commands are easier to remember:
+Natural language works, but explicit `cow` phrases are easier to remember and can trigger companion skills in Codex UI:
 
 ```text
-/cow:init D:\Wiki\my-wiki "My Wiki"
-/cow:ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
-/cow:batch D:\Wiki\my-wiki
-/cow:query D:\Wiki\my-wiki "What is Android AIDL hidden API collision?"
-/cow:lint D:\Wiki\my-wiki
-/cow:graph D:\Wiki\my-wiki
-/cow:review D:\Wiki\my-wiki
-/cow:help
+cow init D:\Wiki\my-wiki "My Wiki"
+cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
+cow batch D:\Wiki\my-wiki
+cow query D:\Wiki\my-wiki "What is Android AIDL hidden API collision?"
+cow lint D:\Wiki\my-wiki
+cow graph D:\Wiki\my-wiki
+cow review D:\Wiki\my-wiki
+cow help
 ```
 
 `cow` means **Codex Obsidian Wiki**.
+These are skill trigger phrases, not Codex slash commands.
 
 See [docs/commands.md](docs/commands.md) for the full command reference.
 Migrating from another Markdown wiki? See [docs/migration.md](docs/migration.md).
@@ -115,7 +125,7 @@ The skill uses a two-step ingest pattern:
 
 Uncertain items go to `wiki/review/` instead of being silently guessed.
 
-`/cow:batch` uses `.wiki-cache.json` to skip unchanged raw files. `lint_wiki.py` checks broken wikilinks, index coverage, source traceability, missing raw sources, and open review items.
+`cow batch` uses `.wiki-cache.json` to skip unchanged raw files. `lint_wiki.py` checks broken wikilinks, index coverage, source traceability, missing raw sources, and open review items.
 Duplicate page names are lint errors because Obsidian wikilinks become ambiguous.
 
 ## Obsidian

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Lint"
+  short_description: "Check and fix wiki health"
+  default_prompt: "Use $cow-lint to run health checks for a Codex Obsidian Wiki."
+

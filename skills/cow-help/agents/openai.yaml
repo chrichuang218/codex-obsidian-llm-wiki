@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Help"
+  short_description: "Codex Obsidian Wiki command cheatsheet"
+  default_prompt: "Use $cow-help to show the Codex Obsidian Wiki command cheatsheet."
+

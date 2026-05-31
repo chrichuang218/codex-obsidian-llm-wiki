@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Review"
+  short_description: "Process wiki review queue"
+  default_prompt: "Use $cow-review to process open review items in a Codex Obsidian Wiki."
+

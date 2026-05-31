@@ -42,7 +42,7 @@ This is a **manual, file-based migration**. It does not modify your old vault. C
 Use the skill or script to initialize a clean target folder:
 
 ```text
-/cow:init D:\Wiki\my-wiki "我的知识库"
+cow init D:\Wiki\my-wiki "我的知识库"
 ```
 
 Or run:
@@ -152,4 +152,3 @@ Do not migrate:
 - Private personal data.
 - Build artifacts or generated caches from unrelated tools.
 - Large binaries that should live outside Git.
-

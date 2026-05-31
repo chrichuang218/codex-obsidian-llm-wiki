@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow"
+  short_description: "Codex Obsidian Wiki command entry"
+  default_prompt: "Use $cow to show or run Codex Obsidian Wiki commands."
+

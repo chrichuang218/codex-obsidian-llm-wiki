@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Ingest"
+  short_description: "Ingest sources into an Obsidian wiki"
+  default_prompt: "Use $cow-ingest to ingest a source into a Codex Obsidian Wiki."
+

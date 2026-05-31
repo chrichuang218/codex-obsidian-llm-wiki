@@ -1,30 +1,31 @@
 # Command Cheatsheet
 
-`/cow` means **Codex Obsidian Wiki**.
+`cow` means **Codex Obsidian Wiki**.
 
-Natural language works, but these explicit commands are easier to remember and easier for Codex to route.
+Natural language works, but these explicit phrases are easier to remember and easier for Codex to route.
+They are skill trigger phrases, not Codex slash commands.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
-| `/cow:init <wiki-root> "<topic>"` | Initialize a new Obsidian-compatible Markdown wiki. |
-| `/cow:ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
-| `/cow:batch <wiki-root>` | Ingest new or changed files under `raw/`, using `.wiki-cache.json` to skip unchanged files. |
-| `/cow:query <wiki-root> "<question>"` | Answer from the wiki with citations. |
-| `/cow:lint <wiki-root>` | Run health checks and fix deterministic issues. |
-| `/cow:graph <wiki-root>` | Create or update `wiki/knowledge-graph.md`. |
-| `/cow:review <wiki-root>` | Process open files in `wiki/review/`. |
-| `/cow:help` | Show this command list. |
+| `cow init <wiki-root> "<topic>"` | Initialize a new Obsidian-compatible Markdown wiki. |
+| `cow ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
+| `cow batch <wiki-root>` | Ingest new or changed files under `raw/`, using `.wiki-cache.json` to skip unchanged files. |
+| `cow query <wiki-root> "<question>"` | Answer from the wiki with citations. |
+| `cow lint <wiki-root>` | Run health checks and fix deterministic issues. |
+| `cow graph <wiki-root>` | Create or update `wiki/knowledge-graph.md`. |
+| `cow review <wiki-root>` | Process open files in `wiki/review/`. |
+| `cow help` | Show this command list. |
 
 ## Examples
 
 ```text
-/cow:init D:\Wiki\my-wiki "工程知识库"
-/cow:ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
-/cow:batch D:\Wiki\my-wiki
-/cow:query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
-/cow:lint D:\Wiki\my-wiki
+cow init D:\Wiki\my-wiki "工程知识库"
+cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
+cow batch D:\Wiki\my-wiki
+cow query D:\Wiki\my-wiki "这个 crash 的根因是什么？"
+cow lint D:\Wiki\my-wiki
 ```
 
 ## Script Helpers

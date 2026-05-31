@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Init"
+  short_description: "Initialize an Obsidian Markdown wiki"
+  default_prompt: "Use $cow-init to initialize a new Codex Obsidian Wiki vault."
+

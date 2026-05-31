@@ -25,14 +25,14 @@ Treat these command aliases as direct operation requests:
 
 | Command | Meaning |
 |---|---|
-| `/cow:init <wiki-root> "<topic>"` | Initialize a new wiki. |
-| `/cow:ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
-| `/cow:batch <wiki-root>` | Ingest new or changed files under `raw/`. |
-| `/cow:query <wiki-root> "<question>"` | Answer from the wiki with citations. |
-| `/cow:lint <wiki-root>` | Run health checks and fix deterministic issues. |
-| `/cow:graph <wiki-root>` | Create or update `wiki/knowledge-graph.md`. |
-| `/cow:review <wiki-root>` | Process open files in `wiki/review/`. |
-| `/cow:help` | Show the command cheatsheet. |
+| `cow init <wiki-root> "<topic>"` | Initialize a new wiki. |
+| `cow ingest <source> <wiki-root>` | Ingest one file, folder, URL, or pasted source. |
+| `cow batch <wiki-root>` | Ingest new or changed files under `raw/`. |
+| `cow query <wiki-root> "<question>"` | Answer from the wiki with citations. |
+| `cow lint <wiki-root>` | Run health checks and fix deterministic issues. |
+| `cow graph <wiki-root>` | Create or update `wiki/knowledge-graph.md`. |
+| `cow review <wiki-root>` | Process open files in `wiki/review/`. |
+| `cow help` | Show the command cheatsheet. |
 
 `cow` means Codex Obsidian Wiki.
 
@@ -55,7 +55,7 @@ Use a two-step ingest:
 
 Do not invent missing facts. If a claim is uncertain, file it under `wiki/review/`.
 
-For `/cow:batch`, use `scripts/cache.py check` to skip unchanged raw files and `scripts/cache.py update` after writing the source page.
+For `cow batch`, use `scripts/cache.py check` to skip unchanged raw files and `scripts/cache.py update` after writing the source page.
 
 ### query
 

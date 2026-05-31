@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Batch"
+  short_description: "Batch ingest changed raw files"
+  default_prompt: "Use $cow-batch to ingest new or changed files under raw/."
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cow Graph"
+  short_description: "Create a wiki knowledge graph"
+  default_prompt: "Use $cow-graph to create or update a Codex Obsidian Wiki knowledge graph."
+

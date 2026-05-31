@@ -19,7 +19,7 @@ Codex + Skill + Obsidian + Markdown
 
 ## 安装
 
-直接让 Codex 安装：
+直接让 Codex 安装主 skill 和命令 companion skills：
 
 ```text
 安装这个 skill：
@@ -29,7 +29,7 @@ https://github.com/chrichuang218/codex-obsidian-llm-wiki/tree/main/skills/codex-
 或使用 Codex 通用 skill 安装器：
 
 ```powershell
-python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki
+python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py --repo chrichuang218/codex-obsidian-llm-wiki --path skills/codex-obsidian-llm-wiki --path skills/cow --path skills/cow-help --path skills/cow-init --path skills/cow-ingest --path skills/cow-batch --path skills/cow-query --path skills/cow-lint --path skills/cow-graph --path skills/cow-review
 ```
 
 安装后重启 Codex。
@@ -62,20 +62,21 @@ python $env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-sk
 
 ## 指令速查
 
-自然语言可以用，但明确指令更好记：
+自然语言可以用，但明确的 `cow` 短语更好记，也能在 Codex UI 里触发 companion skills：
 
 ```text
-/cow:init D:\Wiki\my-wiki "我的知识库"
-/cow:ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
-/cow:batch D:\Wiki\my-wiki
-/cow:query D:\Wiki\my-wiki "AIDL hidden API crash 是什么？"
-/cow:lint D:\Wiki\my-wiki
-/cow:graph D:\Wiki\my-wiki
-/cow:review D:\Wiki\my-wiki
-/cow:help
+cow init D:\Wiki\my-wiki "我的知识库"
+cow ingest D:\Notes\debug-crash.md D:\Wiki\my-wiki
+cow batch D:\Wiki\my-wiki
+cow query D:\Wiki\my-wiki "AIDL hidden API crash 是什么？"
+cow lint D:\Wiki\my-wiki
+cow graph D:\Wiki\my-wiki
+cow review D:\Wiki\my-wiki
+cow help
 ```
 
 `cow` 是 **Codex Obsidian Wiki** 的缩写。
+这些是 skill 触发短语，不是 Codex slash commands。
 
 完整指令说明见 [docs/commands.md](docs/commands.md)。
 从其他 Markdown wiki 迁移时，参考 [docs/migration.md](docs/migration.md)。
@@ -107,7 +108,7 @@ my-wiki/
 - 每个重要结论都要能追到 `wiki/sources/` 或 `raw/`。
 - 不确定内容进入 `wiki/review/`，不强行写死。
 - Obsidian 只做前端，Markdown 才是数据。
-- `/cow:batch` 使用 `.wiki-cache.json` 跳过未变化的 raw 文件。
+- `cow batch` 使用 `.wiki-cache.json` 跳过未变化的 raw 文件。
 - `lint_wiki.py` 会检查断链、index 收录、source traceability、缺失 raw 和 review 项。
 - 重名页面会被视为 lint error，因为 Obsidian wikilinks 会变得歧义。
 
